@@ -6,7 +6,6 @@ Program Summary: to demonstrate my understanding of advanced text output and ari
 
 #include <iostream>
 #include <iomanip>
-#include <cmath>
 
 int main(){
     double raceTime; // time in seconds
@@ -16,7 +15,7 @@ int main(){
     const double SEC_PER_HR = 3600.0;
     const double DISTANCE = 100.0; // distance in meters
     double testMPH;
-
+    
     std::cout << "Enter Race Time: " << std::endl;
     std::cin >> raceTime;
 
