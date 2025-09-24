@@ -19,43 +19,57 @@ int main()
     do {
         std::cout << "Throw 1: ";
         std::cin >> throw1;
-        attempt += 1;
+        attempt += 1; // may need to move depending on auto grader
 
-        if (throw1 >= 0 && throw1 <= 10) {
-            if (throw1 == 10){
-                score = "X";
+            if (throw1 >= 0 && throw1 <= 10) {
+                if (throw1 == 10){
+                    score = "X";
+                    break;
+                }
                 break;
             }
-            break;
-        }
-        else {
-            std::cout << "Invalid throw 1 - retry" << std::endl;
-        }
+            else {
+                std::cout << "Invalid throw 1 - retry" << std::endl;
+            }
 
         } while (attempt < 3);
+
+    remainder -= throw1;
+
+    do {
+        std::cout << "Throw 2: ";
+        std::cin >> throw2;
+        attempt += 1;
+
+        if (throw2 >= 0 && throw2 <= remainder) {
+            if (throwSum == 10) {
+                score = "/";
+            }
+            break;
+        } else {
+            std::cout << "Invalid throw 2 - retry" << std::endl;
+        }
+    } while (attempt < 3);
 
     if (attempt >= 3){
         std::cout << "Invalid bowling turn - program abort" << std::endl;
         return 1;
     }
 
-
     // score calculation
-    while (throw1 >= 0 && throw1 <=10){
+    // while (throw1 >= 0 && throw1 <=10) {
         if (throw1 == 10){
             score = "X";
-            break;
         }
         else if (throwSum == 10 && throw1 < 10){
             score = "/";
-            break;
         }
         else if (throw1 < 10){
             throwSum = throw1 + throw2;
-            //score = std::to_string(throwCombined);
+            score = std::to_string(throwSum);
 
         }
-    }
+    // }
     //end
     std::cout << "Frame: 1" << std::endl;
     std::cout << "Throw: " << throw1 << " " << throw2 << std::endl;
