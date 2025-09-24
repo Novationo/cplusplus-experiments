@@ -12,14 +12,14 @@ int main()
     int throw2 = 0;
     int remainder = 10;
     int attempt = 0;
+    int attempt2 = 0;
     int throwSum;
     std::string score;
 
     //input validation
     do {
-        std::cout << "Throw 1: ";
+        std::cout << "Enter throw 1: ";
         std::cin >> throw1;
-        attempt += 1; // may need to move depending on auto grader
 
             if (throw1 >= 0 && throw1 <= 10) {
                 if (throw1 == 10){
@@ -29,50 +29,64 @@ int main()
                 break;
             }
             else {
-                std::cout << "Invalid throw 1 - retry" << std::endl;
+                if (attempt < 2) {
+                    std::cout << "Invalid throw 1 - retry" << std::endl;
+                }
+                attempt += 1;
             }
 
         } while (attempt < 3);
 
+    if (attempt >= 3){
+        std::cout << "Invalid bowling turn - program abort" << std::endl;
+        return 1;
+        exit;
+    }
+
     remainder -= throw1;
 
     do {
-        std::cout << "Throw 2: ";
+        if (throw1 == 10){
+            break;
+        }
+        std::cout << "Enter throw 2: ";
         std::cin >> throw2;
-        attempt += 1;
+
+        throwSum = throw1 + throw2;
 
         if (throw2 >= 0 && throw2 <= remainder) {
             if (throwSum == 10) {
                 score = "/";
+                break;// how it wanted it in the example
             }
+            if (throw1 < 10){
+            score = std::to_string(throwSum);
             break;
-        } else {
-            std::cout << "Invalid throw 2 - retry" << std::endl;
+            }
         }
-    } while (attempt < 3);
+        else {
+            if (attempt2 < 2) {
+                std::cout << "Invalid throw 2 - retry" << std::endl;
+            }
+            attempt2 += 1;
+        }
+        } while (attempt2 < 3);
 
-    if (attempt >= 3){
+    if (attempt2 >= 3){
         std::cout << "Invalid bowling turn - program abort" << std::endl;
         return 1;
+        exit;
     }
 
-    // score calculation
-    // while (throw1 >= 0 && throw1 <=10) {
-        if (throw1 == 10){
-            score = "X";
-        }
-        else if (throwSum == 10 && throw1 < 10){
-            score = "/";
-        }
-        else if (throw1 < 10){
-            throwSum = throw1 + throw2;
-            score = std::to_string(throwSum);
-
-        }
-    // }
-    //end
     std::cout << "Frame: 1" << std::endl;
+
+    if (throw1 == 10){
+    std::cout << "Throw: " << throw1 << std::endl;
+    }
+    else {
     std::cout << "Throw: " << throw1 << " " << throw2 << std::endl;
+    }
+
     std::cout << "Score: " << score << std::endl;
 
     return 0;
