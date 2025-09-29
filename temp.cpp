@@ -17,4 +17,6 @@ int main() {
    for (int intVal : intValues) {
       cout << intVal << endl;
    }
+
+   return 0;
 }
