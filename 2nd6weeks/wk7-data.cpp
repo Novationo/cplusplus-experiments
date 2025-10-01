@@ -13,7 +13,8 @@ Program Summary:
 int main(){
     std::string title, column1, column2, input;
     std::vector<std::string> inputNames;
-    std::vector<int> inputNums;
+    std::vector<std::string> inputNums;
+    std::vector<int> actualNums;
     bool collecting = true;
 
 
@@ -25,11 +26,11 @@ int main(){
     // coloum inputs
     std::cout << "Enter the column 1 header: ";
     std::cin >> column1;
-    std::cout << "You entered: " << title << std::endl;
+    std::cout << "You entered: " << column1 << std::endl;
 
     std::cout << "Enter the column 2 header: ";
     std::cin >> column2;
-    std::cout << "You entered: " << title << std::endl;
+    std::cout << "You entered: " << column2 << std::endl;
 
     // data collection
     while(collecting){
@@ -38,12 +39,18 @@ int main(){
 
         int locator = input.find(",");
         inputNames.push_back(input.substr(0,locator));
+        inputNums.push_back(input.substr(locator,(input.size()-1)));
         
         for(int i = 0; i < 10; i++){
             std::cout << inputNames[i] << std::endl;
 
         }
 
+        for(int i = 0; i < 5; i++){ //edit number later
+            int temp = 0;
+            
+
+        }
         // output thing before comma and after seperately as string, int
 
 
