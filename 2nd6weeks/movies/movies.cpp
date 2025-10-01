@@ -12,8 +12,26 @@ int main() {
       std::cout << "Program Abort\n";
       return -1;
    }
-
+   std::string oldTitle;
    // TODO write your code here
+   for (int i = 0; i < movies.size(); i++){
+      int firstComma = movies[i].find(",");
+      int secondComma = movies[i].rfind(",");
+
+      std::string time =movies[i].substr(0,firstComma);
+      std::string rating = movies[i].substr(secondComma + 1);
+
+      int titleLen = movies[i].size() -2 - time.size() - rating.size();
+      std::string title = movies[i].substr(firstComma +1, titleLen);
+
+
+
+      if(oldTitle != title){
+      std::cout << "\n" << std::setw(44) <<std::left <<title.substr(0,44) << " | ";
+      std::cout << std::setw(5) << std::right << rating << " | ";}
+      std::cout << time << " ";
+      oldTitle = title;
+   }
 
    std::cout << "\n\n";
    return 0;
