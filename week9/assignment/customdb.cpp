@@ -53,7 +53,7 @@ int main()
         std::cout << "Enter Last Name: " << std::endl;
         std::cin >> entryLast;
 
-        dbWrite.open("CustomerDB.txt");
+        dbWrite.open("week9/assignment/CustomerDB.txt", std::ios::app);
         dbWrite << givenID << " " << entryFirst << " " << entryLast << "\n";
         dbWrite.close();
 
