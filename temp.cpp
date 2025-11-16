@@ -1,30 +1,34 @@
 #include <iostream>
-#include <string>
-#include <iomanip>
 using namespace std;
 
-class Saturday {
-   public:
-      void SetWeather(string saturdayWeather);      
-      void SetHumidity(double saturdayHumidity);      
-      string GetWeather() const;     
-      double GetHumidity() const;        
-   private:
-      string weather;
-      double humidity;
-};
+void UpdateScoreVals(int scoreVals[], int numVals, int updateVal) {
+   int i;
 
-void Saturday::SetWeather(string saturdayWeather) {
-   weather = saturdayWeather;
+   for (i = 0; i < numVals; ++i) {
+      scoreVals[i] = scoreVals[i] + updateVal;
+   }
 }
 
-void Saturday::SetHumidity(double saturdayHumidity) {
-   humidity = saturdayHumidity;
+void PrintScoreVals(const int scoreVals[], int numVals) {
+   int i;
+
+   for (i = 0; i < numVals; ++i)  {
+      cout << scoreVals[i] << endl;
+   }
 }
 
-Saturday::GetWeather() const{
-   return weather;
+int main() {
+   const int NUM_SCORES = 4;
+   int quizScores[NUM_SCORES];
+   int scoreUpdate = 3;
+   int i;
+
+   for (i = 0; i < NUM_SCORES; ++i) {
+      cin >> quizScores[i];
    }
-Saturday::GetHumidity() const{
-   return humidity;
-   }
+
+   UpdateScoreVals(quizScores, NUM_SCORES, scoreUpdate);
+   PrintScoreVals(quizScores, NUM_SCORES);
+
+   return 0;
+}
