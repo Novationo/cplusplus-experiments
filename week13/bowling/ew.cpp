@@ -24,7 +24,7 @@ private:
         {
             return roll;
         }
-        return -1; // Indicate end-of-file or error
+        return -1; // eof / error
     }
 
     // X, /, -
@@ -68,7 +68,7 @@ public:
 
             int frame_score = 0;
             int r2 = 0; // Initialize second roll
-            int r3 = 0; // Initialize third roll (bonus for frame 10)
+            // int r3 = 0; // Initialize third roll (bonus for frame 10)
 
             // 1. Strike
             if (roll1 == 10)

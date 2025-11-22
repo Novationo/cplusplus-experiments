@@ -1,3 +1,10 @@
+/*
+Dylan Smith
+Bowling Sim
+A bowling program that calculates score in realtime 
+and makes it look pretty while doing it.
+*/
+
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -40,46 +47,40 @@ void GetFileInfo()
 
 void CalculateScore()
 {
-    int roll_index = 0;
+    int rollIndex = 0;
     totalPoints = 0;
     const int FRAMES = 10;
 
     for (int frame = 1; frame <= FRAMES; frame++)
     {
-        int frame_score = 0;
+        int frameScore = 0;
 
         // strike
-        if (scoreArr[roll_index] == 10)
+        if (scoreArr[rollIndex] == 10)
         {
-            frame_score = 10 + scoreArr[roll_index + 1] + scoreArr[roll_index + 2];
-            roll_index++;
-            std::cout << "Frame " << frame << ": Strike! Score: " << frame_score << std::endl;
+            frameScore = 10 + scoreArr[rollIndex + 1] + scoreArr[rollIndex + 2];
+            rollIndex++;
+            // std::cout << "Frame " << frame << ": strike Score: " << frameScore << std::endl;
         }
         // spare
-        else if (scoreArr[roll_index] + scoreArr[roll_index + 1] == 10)
+        else if (scoreArr[rollIndex] + scoreArr[rollIndex + 1] == 10)
         {
-            frame_score = 10 + scoreArr[roll_index + 2];
-            roll_index += 2;
-            std::cout << "Frame " << frame << ": Spare! Score: " << frame_score << std::endl;
+            frameScore = 10 + scoreArr[rollIndex + 2];
+            rollIndex += 2;
+            // std::cout << "Frame " << frame << ": spare - Score: " << frameScore << std::endl;
         }
         // open
         else
         {
-            frame_score = scoreArr[roll_index] + scoreArr[roll_index + 1];
-            roll_index += 2;
-            std::cout << "Frame " << frame << ": Open Frame. Score: " << frame_score << std::endl;
+            frameScore = scoreArr[rollIndex] + scoreArr[rollIndex + 1];
+            rollIndex += 2;
+            // std::cout << "Frame " << frame << "open - core: " << frameScore << std::endl;
         }
 
-        totalPoints += frame_score;
+        totalPoints += frameScore;
     }
 }
 
-void PrintFrames()
-{
-    std::stringstream header;
-    header << std::setw(6) << "Frame";
-
-}
 
 int main()
 {
@@ -88,7 +89,7 @@ int main()
     CalculateScore();
 
     std::cout << "\nPoints per bowl: ";
-    for (int i = 0; i < MAX_ROLLS; i++ )
+    for (int i = 0; i < MAX_ROLLS; i++)
     {
         std::cout << scoreArr[i] << " ";
     }
